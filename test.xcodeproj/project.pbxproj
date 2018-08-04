@@ -14,6 +14,7 @@
 		68D5182620FF490300EFF038 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D5182420FF490300EFF038 /* LaunchScreen.storyboard */; };
 		68D5183120FF490300EFF038 /* testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D5183020FF490300EFF038 /* testTests.swift */; };
 		68D5183C20FF490300EFF038 /* testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D5183B20FF490300EFF038 /* testUITests.swift */; };
+		68D51850210F701100EFF038 /* rightyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D5184F210F701100EFF038 /* rightyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		68D5183720FF490300EFF038 /* testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D5183B20FF490300EFF038 /* testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testUITests.swift; sourceTree = "<group>"; };
 		68D5183D20FF490300EFF038 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68D5184F210F701100EFF038 /* rightyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rightyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				68D5181B20FF490200EFF038 /* AppDelegate.swift */,
+				68D5184F210F701100EFF038 /* rightyViewController.swift */,
 				68D5181D20FF490200EFF038 /* ViewController.swift */,
 				68D5181F20FF490200EFF038 /* Main.storyboard */,
 				68D5182220FF490300EFF038 /* Assets.xcassets */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68D5181E20FF490200EFF038 /* ViewController.swift in Sources */,
+				68D51850210F701100EFF038 /* rightyViewController.swift in Sources */,
 				68D5181C20FF490200EFF038 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +351,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = MUAWU295Q3;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -363,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -407,6 +412,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = MUAWU295Q3;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -417,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

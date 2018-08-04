@@ -1,31 +1,28 @@
 //
-//  ViewController.swift
+//  rightyViewcontrollerViewController.swift
 //  test
 //
-//  Created by paris bread on 7/18/18.
+//  Created by paris bread on 7/31/18.
 //  Copyright © 2018 paris bread. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
-var Vibrate = true
-var countNumber = 0
-var steper = 1
 
-class ViewController: UIViewController {
-
+class rightyViewController: UIViewController {
+    
+    
+    
     var shortVibration:UIImpactFeedbackGenerator? = nil
-    var feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+    var feedbackGenerator : UISelectionFeedbackGenerator? = nil
     
     
     @IBAction func increase(_ sender: UIButton) {
         if Vibrate{
-            AudioServicesPlaySystemSound(1352)
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }
         countNumber += steper
         totalAmont.text = String(countNumber)
-        feedbackGenerator.impactOccurred()
-        
         
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
@@ -48,7 +45,7 @@ class ViewController: UIViewController {
     
     @IBAction func clear(_ sender: UIButton) {
         countNumber = 0
-         totalAmont.text = String(countNumber)
+        totalAmont.text = String(countNumber)
         steper = 1
         stepValue.text = String(steper)
         
@@ -63,7 +60,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var vibrateState: UIButton!
     
-    @IBAction func vcontrol(_ sender: UIButton) {
+    @IBAction func vcontrol(_ sender: UISwitch) {
         if Vibrate == true{
             Vibrate = false
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
@@ -75,17 +72,11 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func changeDirection(_ sender: UIButton) {
-        performSegue(withIdentifier: "directionChange", sender: self)
-        
-    }
     
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         totalAmont.text = String(countNumber)
         stepValue.text = String(steper)
         if Vibrate == true{
@@ -93,15 +84,26 @@ class ViewController: UIViewController {
         }else{
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
         }
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
+    @IBAction func changedirection(_ sender: UIButton) {
+        performSegue(withIdentifier: "changeBack", sender: self)
+    }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
-
