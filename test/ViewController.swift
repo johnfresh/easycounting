@@ -11,6 +11,7 @@ import AVFoundation
 var Vibrate = true
 var countNumber = 0
 var steper = 1
+var countNumberArray = [Int]()
 
 class ViewController: UIViewController {
 
@@ -29,7 +30,6 @@ class ViewController: UIViewController {
         
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
-    
     @IBAction func decrease(_ sender: UIButton) {
         if Vibrate{
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -37,7 +37,8 @@ class ViewController: UIViewController {
         countNumber -= steper
         totalAmont.text = String(countNumber)
     }
-    @IBAction func subSteper(_ sender: UIButton) {
+
+	@IBAction func subSteper(_ sender: UIButton) {
         steper -= 1
         stepValue.text = String(steper)
     }
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clear(_ sender: UIButton) {
+		countNumberArray.insert(countNumber, at: 0)
         countNumber = 0
          totalAmont.text = String(countNumber)
         steper = 1
@@ -55,7 +57,10 @@ class ViewController: UIViewController {
     }
     
     
-    
+	@IBAction func showHistory(_ sender: UIButton) {
+		performSegue(withIdentifier: "showHistory", sender: self)
+	}
+
     
     
     @IBOutlet weak var totalAmont: UILabel!
