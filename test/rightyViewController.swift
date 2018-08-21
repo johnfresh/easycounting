@@ -60,7 +60,7 @@ class rightyViewController: UIViewController {
     
     @IBOutlet weak var vibrateState: UIButton!
     
-    @IBAction func vcontrol(_ sender: UISwitch) {
+    @IBAction func vcontrol(_ sender: UIButton) {
         if Vibrate == true{
             Vibrate = false
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
