@@ -16,7 +16,7 @@ class HistoryTableViewController: UITableViewController {
 	}
 
 	@IBAction func backToMainView(_ sender: UIBarButtonItem) {
-		performSegue(withIdentifier: "backToMainView", sender: self)
+		performSegue(withIdentifier: "historybackToMainView", sender: self)
 	}
 	
 
