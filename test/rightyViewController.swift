@@ -14,7 +14,7 @@ class rightyViewController: UIViewController {
     
     
     
-    var feedbackGenerator : UISelectionFeedbackGenerator? = nil
+
 
 	func tryVibrate(){
 		if vibrate == true{
