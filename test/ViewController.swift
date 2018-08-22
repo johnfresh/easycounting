@@ -12,7 +12,7 @@ var vibrate = true
 var countNumber = 0
 var steper = 1
 var countNumberArray = [Int]()
-var _3dtouchEnabled : Bool?
+var _3dtouchEnabled = false
 let tapFeedBack = UIImpactFeedbackGenerator(style: .heavy)
 
 func tryVibrate(){
@@ -37,14 +37,23 @@ class ViewController: UIViewController {
         tryVibrate()
         countNumber += steper
         totalAmont.text = String(countNumber)
+		
 
-
+		debug()
 
 
 
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
-
+	func debug(){
+		print(String(vibrate))
+		if _3dtouchEnabled == true{
+			print("3d touch is enabled")
+		}
+		if _3dtouchEnabled == false {
+			print("3d touch is disabled")
+		}
+	}
 
 
     @IBAction func decrease(_ sender: UIButton) {

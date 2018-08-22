@@ -21,9 +21,20 @@ class rightyViewController: UIViewController {
         tryVibrate()
         countNumber += steper
         totalAmont.text = String(countNumber)
+		debug()
         
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
+
+	func debug(){
+		print(String(vibrate))
+		if _3dtouchEnabled == true{
+			print("3d touch is enabled")
+		}
+		if _3dtouchEnabled == false {
+			print("3d touch is disabled")
+		}
+	}
     
     @IBAction func decrease(_ sender: UIButton) {
         tryVibrate()
@@ -77,11 +88,7 @@ class rightyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		if self.traitCollection.forceTouchCapability == .available {
-			_3dtouchEnabled = true
-		}else{
-			_3dtouchEnabled = false
-		}
+		
 
         totalAmont.text = String(countNumber)
         stepValue.text = String(steper)
