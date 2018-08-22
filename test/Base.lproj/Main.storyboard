@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-109" y="-307"/>
+            <point key="canvasLocation" x="-450" y="-652"/>
         </scene>
         <!--Righty View Controller-->
         <scene sceneID="ZpT-CU-Ygr">
@@ -301,6 +301,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="63.5"/>
                                                         <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <state key="normal" title="History"/>
+                                                        <connections>
+                                                            <action selector="showHistory:" destination="5aK-Nz-lF8" eventType="touchUpInside" id="bGP-Xa-hPR"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1L-ZY-8nW">
                                                         <rect key="frame" x="105" y="0.0" width="100" height="63.5"/>
@@ -388,11 +391,12 @@
                         <outlet property="totalAmont" destination="fGy-bl-Sqq" id="sHS-C3-h89"/>
                         <outlet property="vibrateState" destination="8oU-Wl-bxP" id="EEA-sv-HQt"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="changeBack" id="sfy-ds-jXM"/>
+                        <segue destination="egh-ZU-brO" kind="show" identifier="rightToHistory" id="jla-75-1uI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zua-RU-XbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="-307"/>
+            <point key="canvasLocation" x="-450" y="-1391"/>
         </scene>
         <!--History Table View Controller-->
         <scene sceneID="yv1-cT-NRE">
@@ -444,14 +448,17 @@
                     </tableView>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="historybackToMainView" id="Yjt-Ef-PyH"/>
+                        <segue destination="5aK-Nz-lF8" kind="show" identifier="historyToright" id="eGN-u9-iyF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATi-Vz-cEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1265" y="47"/>
+            <point key="canvasLocation" x="921" y="-1090"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sfy-ds-jXM"/>
+        <segue reference="3gF-Hp-SLi"/>
+        <segue reference="Xcy-5q-SvI"/>
+        <segue reference="Yjt-Ef-PyH"/>
     </inferredMetricsTieBreakers>
 </document>

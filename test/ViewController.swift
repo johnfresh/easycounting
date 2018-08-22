@@ -58,6 +58,7 @@ class ViewController: UIViewController {
     
     
 	@IBAction func showHistory(_ sender: UIButton) {
+		masterView = 1
 		performSegue(withIdentifier: "showHistory", sender: self)
 	}
 

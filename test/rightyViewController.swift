@@ -52,7 +52,11 @@ class rightyViewController: UIViewController {
     }
     
     
-    
+	@IBAction func showHistory(_ sender: UIButton) {
+		masterView = 2
+		performSegue(withIdentifier: "rightToHistory", sender: self)
+	}
+
     
     
     @IBOutlet weak var totalAmont: UILabel!
