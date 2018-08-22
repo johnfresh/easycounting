@@ -8,32 +8,47 @@
 
 import UIKit
 import AVFoundation
-var Vibrate = true
+var vibrate = true
 var countNumber = 0
 var steper = 1
 var countNumberArray = [Int]()
+var _3dtouchEnabled : Bool?
+let tapFeedBack = UIImpactFeedbackGenerator(style: .heavy)
+
+func tryVibrate(){
+	if vibrate == true{
+		if _3dtouchEnabled == true{
+			tapFeedBack.impactOccurred()
+		}else{
+			AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+		}
+	}
+}
 
 class ViewController: UIViewController {
 
+
+
     var shortVibration:UIImpactFeedbackGenerator? = nil
-    var feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+
     
     
     @IBAction func increase(_ sender: UIButton) {
-        if Vibrate{
-            AudioServicesPlaySystemSound(1352)
-        }
+        tryVibrate()
         countNumber += steper
         totalAmont.text = String(countNumber)
-        feedbackGenerator.impactOccurred()
-        
-        
+
+
+
+
+
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
+
+
+
     @IBAction func decrease(_ sender: UIButton) {
-        if Vibrate{
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-        }
+        tryVibrate()
         countNumber -= steper
         totalAmont.text = String(countNumber)
     }
@@ -70,11 +85,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var vibrateState: UIButton!
     
     @IBAction func vcontrol(_ sender: UIButton) {
-        if Vibrate == true{
-            Vibrate = false
+        if vibrate == true{
+            vibrate = false
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
         }else{
-            Vibrate = true
+            vibrate = true
             vibrateState.setTitle("Vibrate:On", for: .normal)
         }
     }
@@ -86,18 +101,30 @@ class ViewController: UIViewController {
         
     }
     
-    
+	func vibrateOn(){
+		vibrateState.setTitle("Vibrate:ON", for: .normal)
+	}
+	func vibrateOff(){
+		vibrateState.setTitle("Vibrate:OFF", for: .normal)
+	}
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		if self.traitCollection.forceTouchCapability == .available {
+			_3dtouchEnabled = true
+		}else{
+			_3dtouchEnabled = false
+		}
+
+
         totalAmont.text = String(countNumber)
         stepValue.text = String(steper)
-        if Vibrate == true{
-            vibrateState.setTitle("Vibrate:ON", for: .normal)
+        if vibrate == true{
+            vibrateOn()
         }else{
-            vibrateState.setTitle("Vibrate:OFF", for: .normal)
+            vibrateOff()
         }
         
         // Do any additional setup after loading the view, typically from a nib.

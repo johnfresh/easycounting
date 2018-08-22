@@ -18,9 +18,7 @@ class rightyViewController: UIViewController {
     
     
     @IBAction func increase(_ sender: UIButton) {
-        if Vibrate{
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-        }
+        tryVibrate()
         countNumber += steper
         totalAmont.text = String(countNumber)
         
@@ -28,9 +26,7 @@ class rightyViewController: UIViewController {
     }
     
     @IBAction func decrease(_ sender: UIButton) {
-        if Vibrate{
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-        }
+        tryVibrate()
         countNumber -= steper
         totalAmont.text = String(countNumber)
     }
@@ -65,11 +61,11 @@ class rightyViewController: UIViewController {
     @IBOutlet weak var vibrateState: UIButton!
     
     @IBAction func vcontrol(_ sender: UIButton) {
-        if Vibrate == true{
-            Vibrate = false
+        if vibrate == true{
+            vibrate = false
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
         }else{
-            Vibrate = true
+            vibrate = true
             vibrateState.setTitle("Vibrate:On", for: .normal)
         }
     }
@@ -81,9 +77,15 @@ class rightyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		if self.traitCollection.forceTouchCapability == .available {
+			_3dtouchEnabled = true
+		}else{
+			_3dtouchEnabled = false
+		}
+
         totalAmont.text = String(countNumber)
         stepValue.text = String(steper)
-        if Vibrate == true{
+        if vibrate == true{
             vibrateState.setTitle("Vibrate:ON", for: .normal)
         }else{
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
