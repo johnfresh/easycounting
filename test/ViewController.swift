@@ -8,28 +8,37 @@
 
 import UIKit
 import AVFoundation
+
 var vibrate = true
+
 var countNumber = 0
 var steper = 1
 var countNumberArray = [Int]()
-var _3dtouchEnabled = false
+
+//var _3dtouchEnabled : Bool?
 let tapFeedBack = UIImpactFeedbackGenerator(style: .heavy)
 
-func tryVibrate(){
-	if vibrate == true{
-		if _3dtouchEnabled == true{
-			tapFeedBack.impactOccurred()
-		}else{
-			AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-		}
-	}
-}
+
+
+
 
 class ViewController: UIViewController {
 
 
 
-    var shortVibration:UIImpactFeedbackGenerator? = nil
+
+	func tryVibrate(){
+		if vibrate == true{
+			if self.traitCollection.forceTouchCapability == .available{
+				tapFeedBack.impactOccurred()
+				print("3d touch is avaliable")
+			}else{
+				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+				print("3d is disable")
+			}
+
+		}
+	}
 
     
     
@@ -39,22 +48,16 @@ class ViewController: UIViewController {
         totalAmont.text = String(countNumber)
 		
 
-		debug()
+
 
 
 
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
-	func debug(){
-		print(String(vibrate))
-		if _3dtouchEnabled == true{
-			print("3d touch is enabled")
-		}
-		if _3dtouchEnabled == false {
-			print("3d touch is disabled")
-		}
-	}
 
+
+
+	//lines for debug stop
 
     @IBAction func decrease(_ sender: UIButton) {
         tryVibrate()
@@ -121,11 +124,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		if self.traitCollection.forceTouchCapability == .available {
+		/*if self.traitCollection.forceTouchCapability == .available {
 			_3dtouchEnabled = true
 		}else{
 			_3dtouchEnabled = false
-		}
+		}*/
 
 
         totalAmont.text = String(countNumber)

@@ -13,28 +13,34 @@ class rightyViewController: UIViewController {
     
     
     
-    var shortVibration:UIImpactFeedbackGenerator? = nil
+    
     var feedbackGenerator : UISelectionFeedbackGenerator? = nil
+
+	func tryVibrate(){
+		if vibrate == true{
+			if self.traitCollection.forceTouchCapability == .available{
+				tapFeedBack.impactOccurred()
+				print("3d touch is avaliable")
+			}else{
+				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+				print("3d is disable")
+			}
+
+		}
+	}
+
     
     
     @IBAction func increase(_ sender: UIButton) {
         tryVibrate()
         countNumber += steper
         totalAmont.text = String(countNumber)
-		debug()
+
         
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
 
-	func debug(){
-		print(String(vibrate))
-		if _3dtouchEnabled == true{
-			print("3d touch is enabled")
-		}
-		if _3dtouchEnabled == false {
-			print("3d touch is disabled")
-		}
-	}
+	
     
     @IBAction func decrease(_ sender: UIButton) {
         tryVibrate()
@@ -88,7 +94,7 @@ class rightyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		
+
 
         totalAmont.text = String(countNumber)
         stepValue.text = String(steper)
