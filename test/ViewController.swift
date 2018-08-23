@@ -78,8 +78,8 @@ class ViewController: UIViewController {
 		countNumberArray.insert(countNumber, at: 0)
         countNumber = 0
          totalAmont.text = String(countNumber)
-        steper = 1
-        stepValue.text = String(steper)
+        //steper = 1
+        //stepValue.text = String(steper)
         
     }
     
