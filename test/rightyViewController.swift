@@ -16,11 +16,11 @@ class rightyViewController: UIViewController {
         if vibrate == true{
             if self.traitCollection.forceTouchCapability == .available{
                 if isFirstTaptic == true{
-                    print("iphone 6s is not the fully functional version")
+                   // print("iphone 6s is not the fully functional version")
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 }else{
                     tapFeedBack.impactOccurred()
-                    print("3d touch is avaliable")
+                   // print("3d touch is avaliable")
                 }
             }else{
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
