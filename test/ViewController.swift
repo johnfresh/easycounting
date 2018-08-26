@@ -14,24 +14,61 @@ var vibrate = true
 var countNumber = 0
 var steper = 1
 var countNumberArray = [Int]()
+var isFirstTaptic : Bool?
 
 //var _3dtouchEnabled : Bool?
 let tapFeedBack = UIImpactFeedbackGenerator(style: .heavy)
 
+extension UIDevice {
+	//获取设备具体详细的型号
+	var modelName: String {
+		var systemInfo = utsname()
+		uname(&systemInfo)
+		let machineMirror = Mirror(reflecting: systemInfo.machine)
+		let identifier = machineMirror.children.reduce("") { identifier, element in
+			guard let value = element.value as? Int8, value != 0 else { return identifier }
+			return identifier + String(UnicodeScalar(UInt8(value)))
+		}
+		switch identifier {
+		case "iPhone8,1":                                 return "True"
+		case "iPhone8,2":                                 return "True"
+		default:                                        return identifier
 
+		}
+	}
+
+}
+
+
+	
 
 
 
 class ViewController: UIViewController {
 
-
+	func isFirstGenerationTaptic()->Bool{
+		let identifer = UIDevice.current.modelName
+		if identifer == "True"{
+			return true
+		}else{
+			return false
+		}
+	}
 
 
 	func tryVibrate(){
 		if vibrate == true{
+
 			if self.traitCollection.forceTouchCapability == .available{
-				tapFeedBack.impactOccurred()
-				print("3d touch is avaliable")
+				if isFirstTaptic == true{
+					print("iphone 6s is not the fully functional version")
+					AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+
+				}else{
+					tapFeedBack.impactOccurred()
+					print("3d touch is avaliable")
+				}
+
 			}else{
 				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
 				print("3d is disable")
@@ -129,6 +166,9 @@ class ViewController: UIViewController {
 		}else{
 			_3dtouchEnabled = false
 		}*/
+		if isFirstGenerationTaptic(){
+			isFirstTaptic = true
+		}
 
 
         totalAmont.text = String(countNumber)

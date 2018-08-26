@@ -10,38 +10,32 @@ import UIKit
 import AVFoundation
 
 class rightyViewController: UIViewController {
-    
-    
-    
-    
 
 
 	func tryVibrate(){
-		if vibrate == true{
-			if self.traitCollection.forceTouchCapability == .available{
+		if self.traitCollection.forceTouchCapability == .available{
+			if isFirstTaptic == true{
+				print("iphone 6s is not the fully functional version")
+				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+			}else{
 				tapFeedBack.impactOccurred()
 				print("3d touch is avaliable")
-			}else{
-				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-				print("3d is disable")
 			}
-
+		}else{
+			AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+			print("3d is disable")
 		}
 	}
 
-    
+
     
     @IBAction func increase(_ sender: UIButton) {
         tryVibrate()
         countNumber += steper
         totalAmont.text = String(countNumber)
-
-        
         //AudioServicesPlayAlertSound(1352)  // 1352 is vibrating whenever the phone is vibrate or not
     }
 
-	
-    
     @IBAction func decrease(_ sender: UIButton) {
         tryVibrate()
         countNumber -= steper
@@ -75,7 +69,6 @@ class rightyViewController: UIViewController {
     
     @IBOutlet weak var totalAmont: UILabel!
     @IBOutlet var stepValue: UILabel!
-    
     @IBOutlet weak var vibrateState: UIButton!
     
     @IBAction func vcontrol(_ sender: UIButton) {
@@ -94,9 +87,6 @@ class rightyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-
         totalAmont.text = String(countNumber)
         stepValue.text = String(steper)
         if vibrate == true{
