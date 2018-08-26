@@ -58,20 +58,17 @@ class ViewController: UIViewController {
 
 	func tryVibrate(){
 		if vibrate == true{
-
 			if self.traitCollection.forceTouchCapability == .available{
 				if isFirstTaptic == true{
-					print("iphone 6s is not the fully functional version")
+				//	print("iphone 6s is not the fully functional version")
 					AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-
 				}else{
 					tapFeedBack.impactOccurred()
-					print("3d touch is avaliable")
+				//	print("3d touch is avaliable")
 				}
-
 			}else{
 				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-				print("3d is disable")
+			//	print("3d is disable")
 			}
 
 		}
@@ -152,9 +149,11 @@ class ViewController: UIViewController {
     
 	func vibrateOn(){
 		vibrateState.setTitle("Vibrate:ON", for: .normal)
+        vibrate = true
 	}
 	func vibrateOff(){
 		vibrateState.setTitle("Vibrate:OFF", for: .normal)
+        vibrate = false
 	}
     
     

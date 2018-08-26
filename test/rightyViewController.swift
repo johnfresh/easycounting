@@ -12,20 +12,23 @@ import AVFoundation
 class rightyViewController: UIViewController {
 
 
-	func tryVibrate(){
-		if self.traitCollection.forceTouchCapability == .available{
-			if isFirstTaptic == true{
-				print("iphone 6s is not the fully functional version")
-				AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-			}else{
-				tapFeedBack.impactOccurred()
-				print("3d touch is avaliable")
-			}
-		}else{
-			AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-			print("3d is disable")
-		}
-	}
+    func tryVibrate(){
+        if vibrate == true{
+            if self.traitCollection.forceTouchCapability == .available{
+                if isFirstTaptic == true{
+                    print("iphone 6s is not the fully functional version")
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                }else{
+                    tapFeedBack.impactOccurred()
+                    print("3d touch is avaliable")
+                }
+            }else{
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                print("3d is disable")
+            }
+            
+        }
+    }
 
 
     
@@ -91,8 +94,10 @@ class rightyViewController: UIViewController {
         stepValue.text = String(steper)
         if vibrate == true{
             vibrateState.setTitle("Vibrate:ON", for: .normal)
+            vibrate = true
         }else{
             vibrateState.setTitle("Vibrate:OFF", for: .normal)
+            vibrate = false
         }
         // Do any additional setup after loading the view.
     }
